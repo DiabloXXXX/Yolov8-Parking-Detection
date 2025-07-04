@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# YOLOv8 Model Files (Large files - should be downloaded separately)
+03_MODELS/*.pt
+*.pt
+
+# Video Files (Large files - should be stored separately)
+04_DATA/parking_area/video/*.mp4
+*.mp4
+*.avi
+*.mov
+
+# Output and Logs
+08_LOGS_OUTPUT/
+*.log
+output/
+results/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Test outputs
+test_results/
+benchmark_results/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
