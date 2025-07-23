@@ -10,6 +10,18 @@ import seaborn as sns
 from datetime import datetime
 import json
 
+import sys
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).parent.parent
+SRC_DIR = PROJECT_ROOT / "src"
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(SRC_DIR))
+SRC_DIR = PROJECT_ROOT / "src"
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(SRC_DIR))
+
 class AdvancedTester:
     """Advanced testing with statistical analysis"""
     
@@ -99,10 +111,11 @@ class AdvancedTester:
         print(df.to_string(index=False))
         
         # Save detailed results
-        with open('output/statistical_analysis.json', 'w') as f:
+        output_json = PROJECT_ROOT / 'output' / 'statistical_analysis.json'
+        output_json.parent.mkdir(parents=True, exist_ok=True)
+        with open(output_json, 'w') as f:
             json.dump(self.detailed_results, f, indent=2)
-        
-        print(f"\n💾 Detailed results saved to: output/statistical_analysis.json")
+        print(f"\n💾 Detailed results saved to: {output_json}")
     
     def plot_statistical_analysis(self):
         """Create statistical visualization plots"""
@@ -155,9 +168,10 @@ class AdvancedTester:
         axes[1,1].tick_params(axis='x', rotation=45)
         
         plt.tight_layout()
-        plt.savefig('output/statistical_analysis.png', dpi=300, bbox_inches='tight')
+        output_png = PROJECT_ROOT / 'output' / 'statistical_analysis.png'
+        output_png.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_png, dpi=300, bbox_inches='tight')
         plt.show()
-        
-        print("📊 Statistical plots saved to: output/statistical_analysis.png")
+        print(f"📊 Statistical plots saved to: {output_png}")
 
 print("✅ Advanced testing framework ready!")

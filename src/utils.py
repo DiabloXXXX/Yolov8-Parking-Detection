@@ -94,8 +94,8 @@ def format_time(seconds: float) -> str:
 def save_config_template(output_path: str = "config/config_template.yaml"):
     """Save a configuration template file"""
     config_template = {
-        "model_path": "yolov8s.pt",
-        "class_list_path": "parking_area/class_list.txt",
+        "model_path": "models/yolov8s.pt",
+        "class_list_path": "data/parking_area/class_list.txt",
         "target_vehicle_classes": {
             2: "car",
             5: "bus", 
@@ -103,10 +103,10 @@ def save_config_template(output_path: str = "config/config_template.yaml"):
         },
         "parking_vehicle_keywords": ["car", "bus", "truck"],
         "video_paths": [
-            "parking_area/video/park1.mp4",
-            "parking_area/video/park2.mp4",
-            "parking_area/video/park3.mp4",
-            "parking_area/video/park4.mp4"
+            "data/parking_area/video/park1.mp4",
+            "data/parking_area/video/park2.mp4",
+            "data/parking_area/video/park3.mp4",
+            "data/parking_area/video/park4.mp4"
         ],
         "min_width": 640,
         "min_height": 360,
@@ -117,7 +117,7 @@ def save_config_template(output_path: str = "config/config_template.yaml"):
         "frame_skip": 3,
         "resize_width": 1020,
         "resize_height": 500,
-        "output_dir": "output",
+        "output_dir": "output_logs/output",
         "save_results": True,
         "show_display": True,
         "ground_truth_data": {

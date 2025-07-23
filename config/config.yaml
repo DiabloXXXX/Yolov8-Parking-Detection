@@ -1,8 +1,8 @@
 # YOLOv8 Vehicle Detection Configuration
 
 # Model settings
-model_path: yolov8s.pt
-class_list_path: parking_area/class_list.txt
+model_path: models/yolov8s.pt
+class_list_path: data/parking_area/class_list.txt
 
 # Target vehicle classes (TANPA MOTOR/MOTORCYCLE)
 target_vehicle_classes:
@@ -18,10 +18,10 @@ parking_vehicle_keywords:
 
 # Video paths
 video_paths:
-  - parking_area/video/park1.mp4
-  - parking_area/video/park2.mp4
-  - parking_area/video/park3.mp4
-  - parking_area/video/park4.mp4
+  - data/parking_area/video/park1.mp4
+  - data/parking_area/video/park2.mp4
+  - data/parking_area/video/park3.mp4
+  - data/parking_area/video/park4.mp4
 
 # Video validation settings
 min_width: 640
@@ -48,7 +48,7 @@ max_movement_threshold: 10    # Increased threshold to filter camera shake
 cleanup_timeout: 5.0          # Remove vehicles not seen for this long
 
 # Output settings
-output_dir: 08_LOGS_OUTPUT/output
+output_dir: output_logs/output
 save_results: true
 show_display: true
 

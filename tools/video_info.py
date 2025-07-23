@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Video Information Display Script
 Shows detailed information for all parking videos
@@ -7,6 +6,13 @@ Shows detailed information for all parking videos
 import cv2
 import os
 from pathlib import Path
+from datetime import datetime
+
+# Import Config from src
+from src.config import Config
+
+# Define PROJECT_ROOT for consistent pathing
+PROJECT_ROOT = Path(__file__).parent.parent
 
 def get_detailed_video_info(video_path):
     """Get comprehensive video information"""
@@ -65,12 +71,8 @@ def format_duration(seconds):
 def display_video_info():
     """Display information for all videos"""
     
-    video_paths = [
-        'parking_area/video/park1.mp4',
-        'parking_area/video/park2.mp4', 
-        'parking_area/video/park3.mp4',
-        'parking_area/video/park4.mp4'
-    ]
+    config = Config(str(PROJECT_ROOT / "config" / "config.yaml"))
+    video_paths = config.VIDEO_PATHS
     
     print("🎬 INFORMASI DETAIL VIDEO PARKIR")
     print("=" * 80)
@@ -96,10 +98,10 @@ def display_video_info():
             print(f"• Path            : {info['path']}")
             
             # Validation status
-            if info['width'] >= 640 and info['height'] >= 360:
-                print(f"• Status          : ✅ Valid (memenuhi minimum 640x360)")
+            if info['width'] >= config.MIN_WIDTH and info['height'] >= config.MIN_HEIGHT:
+                print(f"• Status          : ✅ Valid (memenuhi minimum {config.MIN_WIDTH}x{config.MIN_HEIGHT})")
             else:
-                print(f"• Status          : ❌ Invalid (di bawah minimum 640x360)")
+                print(f"• Status          : ❌ Invalid (di bawah minimum {config.MIN_WIDTH}x{config.MIN_HEIGHT})")
                 
         else:
             print(f"❌ Error: Tidak dapat membaca video {video_path}")
@@ -150,8 +152,8 @@ def display_video_info():
         print(f"• Unique resolutions     : {len(resolutions)} ({', '.join(resolutions)})")
         
         # Validation summary
-        valid_videos = sum(1 for info in all_videos_info if info['width'] >= 640 and info['height'] >= 360)
-        print(f"• Valid videos (≥640x360): {valid_videos}/{len(all_videos_info)}")
+        valid_videos = sum(1 for info in all_videos_info if info['width'] >= config.MIN_WIDTH and info['height'] >= config.MIN_HEIGHT)
+        print(f"• Valid videos (≥{config.MIN_WIDTH}x{config.MIN_HEIGHT}): {valid_videos}/{len(all_videos_info)}")
 
 if __name__ == "__main__":
     display_video_info()
